@@ -242,8 +242,7 @@ function ex_8_I(a){
 function ex_8_R(a){
 	n=Math.sqrt(a.length);
     b=new Array;
-    while()
-    }
+
 }
 
 /*Dato una lista di elementi, scrivere un algoritmo che permetta di invertire l’ordine degli
