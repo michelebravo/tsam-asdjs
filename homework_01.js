@@ -3,7 +3,7 @@
 function ex_1_I(x) {
     var sum = 0;
     for (i = 0; i < x.length; i++) {
-        if (x[i] >= 0 || x.length>0) {
+        if (x[i] >= 0) {
             sum = sum + x[i];
         } 
         else {
@@ -49,12 +49,12 @@ function ex_2_I(n) {
 
 function ex_2_R(n) {
     
-    if(0<n){
-        sum=sum+i;
-        i+=2;
-        return ex_2_R(n-1);
+    if(n==0){
+        return 0;
     }
-   else {return sum;}
+   else {
+   	return 2*n-1+ex_2_R(n-1);
+   	}
 }
 
 
@@ -148,7 +148,7 @@ function ex_5_R(a,b){
 	var per=0;
 	for(i=0;i<b;i++){
 		per+=a;
-		return per+ex_5_R(a,b);
+		return per+ex_5_R(a,b-1);
 	}
 	return per;
 }
@@ -175,21 +175,18 @@ function ex_6_I(a,b){
 
 
 
-function ex_6_R (a,b)
-{
-    var count=0;
-	if(a<b)
-	{
-		return a;
-	}
-	else
-	{
-		a-=b;
-		count++;
-		return ex_6_R(a,b);
-	}
+function div(a,b,q){
+   if(a>=b){
+   	return div(a-b,b,++q);
+   }else{
+   	var c=[q,a];
+   	return c;
+   }
 }
 
+function ex_6_R(a,b){
+	return div(a,b,0);
+}
 
 
 /*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite l’utilizzo dei soli
@@ -208,13 +205,16 @@ function ex_7_I(x,y){
 }
 
 
-function ex_7_R(x,y){
+function pow(x,y,c){
 
-	for(i=y;i>0;i--){
-		c=ex_5_I(x,ex_7_R(x,y-1));
-		return c;
+	for(i=0;i<y;i++){
+		return pow(x,y-1,ex_5_I(x,c)); 
 	}
 	return c;
+}
+
+function ex_7_R(x,y){
+	return pow(x,y,1);
 }
 
 
@@ -228,21 +228,33 @@ oggetti in un array bidimensionale n x n.*/
 
 function ex_8_I(a){
     n=Math.sqrt(a.length);
-    b=new Array;
+    b=[];
     for(var i=0; i<n; i++){
-        b[i]=new Array;
-        b[i].length=n;
+        b[i]=[];
+        for(var j=0;j<n;j++){
+        	b[i][j]=a[n*i+j];
+        }
          
     }
     return b;
 
 }
 
-
 function ex_8_R(a){
-	n=Math.sqrt(a.length);
-    b=new Array;
-
+	var n = Math.sqrt(a.length); 
+    var b = new Array(n);
+    for(var i=0;i<n;i++){
+        b[i]=new Array(n);
+    }
+    return riempi(a,b,n,0);
+}
+function riempi(a,b,n,i){
+    if(i==a.length){
+        return b;
+        }else{
+    b[Math.floor(i/n)][i%n]=a[i];
+    return riempi(a,b,n,++i);
+    }
 }
 
 /*Dato una lista di elementi, scrivere un algoritmo che permetta di invertire l’ordine degli
@@ -262,16 +274,9 @@ function ex_9_I(a){
 }
 
 
-function ex_9_R(a){
-	var c=new Array;
-	c.length=a.length;
-	while(a.length>0){
-		c[a.length-1]=a[0];
-		return a[0];
-	}
-	return c;
+function ex_9_R(aa){
+    return (aa.length==1)?aa[0]:new Array(0).concat(aa.pop(),ex_9_R(aa));
 }
-
 
 /*Dati due interi a, n maggiori di 0, scrivere un algoritmo che crea un lista di n elementi
 
@@ -288,16 +293,8 @@ function ex_10_I(a,b){
 }
 
 
-function ex_10_R(a,b){
-	var c=new array;
-	var i=0;
-	while(b>0){
-	c[i]=a;
-	i++;
-	return ex_10_R(a,b-1);
-	}
-	return c;
-}
+function ex_10_R(a,n){
+    return (n==1)?a:new Array(0).concat(a,ex_10_R(a,--n));}
 
 
 
@@ -333,4 +330,26 @@ function ex_11_I(a){
    }
    
     return a;
+}
+
+
+function ex_11_R(a){
+    var nOdds = 0;
+    for(var i=0;i<a.length;i++){
+        if(a[i]%2!=0)
+            nOdds++;
+    }
+    return orderOdds(a,nOdds,new Array(a.length),0);
+}
+function orderOdds(a,freePosForEven,b,i){
+    if(a.length==0)
+        return b;
+    if(a[0]%2!=0){
+        b[i]=a.shift();
+        return orderOdds(a,freePosForEven,b,++i);    
+    }  
+    else{
+        b[freePosForEven]=a.shift();
+        return orderOdds(a,freePosForEven+1,b,i);
+    }
 }
