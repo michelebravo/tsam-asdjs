@@ -120,9 +120,13 @@ function ex_4_R(a,b){
     if (a==b){
         return sum + a;
     }
-    else{
+    if (a<b){
         sum+=a;
         return sum+ex_4_R(a+1,b);
+    }
+    if (a>b){
+        sum+=b;
+        return sum+ex_4_R(b+1,a);
     }
 }
 
