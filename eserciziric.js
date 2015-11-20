@@ -7,7 +7,11 @@
    }
 }
 var a = [1, 2, 3, -4, 5];
-console.log(sommaric(a));*/
+console.log(sommaric(a));
+
+function ex_1_R(x){
+	return sommaric(x)
+}*/
 
 
 
@@ -74,6 +78,7 @@ else
 /* var per=0;
  var i=1;
 function mult(a,b){
+	var i=1;
 	per=a;
 	if(i==b)
     return per;
@@ -125,3 +130,21 @@ console.log('divisione:');
 console.log(count);
 console.log('resto:');
 console.log(a);*/
+function mult(a,b){
+    var per=0;
+    for(i=0;i<b;i++){
+        per+=a;
+    }
+    return per;
+}
+	
+function pow(x,y){
+
+	for(i=y;i>0;i--){
+		c=mult(x,pow(x,y-1));
+		return c;
+	}
+	return c;
+}
+
+

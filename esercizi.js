@@ -1,7 +1,7 @@
-/*function somma(x) {
+function somma(x) {
     var sum = 0;
     for (i = 0; i < x.length; i++) {
-        if (x[i] >= 0) {
+        if (x[i] >= 0 || x.length>0) {
             sum = sum + x[i];
         } 
         else {
@@ -10,10 +10,12 @@
     }
     return sum;
 }
-var a = [1, 2, 3, -4, 5];
-console.log(somma(a));*/
+var a = [1, 2, 3, 4, 5];
+console.log(somma(a));
 
-
+function ex_1_I(x){
+    return somma(x);
+}
 
 
 
