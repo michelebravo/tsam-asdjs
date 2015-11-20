@@ -1,4 +1,4 @@
-Array.prototype.sum = function () {
+Array.prototype.ex_1 = function () {
 
     function buildUntil(a, check) {
         var b = [];
@@ -17,13 +17,10 @@ Array.prototype.sum = function () {
 }
 
 
-function ex_1_P(a) {
-    return a.sum();
-}
 
 
 
-Array.prototype.media = function () {
+Array.prototype.ex_3 = function () {
         if (this.length == 0){
         return 0;
     }else{
@@ -31,16 +28,13 @@ Array.prototype.media = function () {
     }
 }
 
-function ex_3_P(x){
-    return media(x);
-}
 
 
 
 
 var array = [3,5,6,1,2,7,8,9,0]; 
 
-Array.prototype.bidimensionaleR = function () {
+Array.prototype.ex_8 = function () {
 
     function magic(myarray, matrix) {
         matrix.unshift(myarray);
@@ -60,12 +54,9 @@ Array.prototype.bidimensionaleR = function () {
 }
 
 
-function ex_8_P(a) {
-    return a.bidimensionaleR();
-}
 
 
-Array.prototype.invert = function() {
+Array.prototype.ex_9 = function() {
     var result = [];
     
     this.forEach(x => {
@@ -75,18 +66,12 @@ Array.prototype.invert = function() {
     return result;
 }
 
-function ex_9_P(a) {
-    return a.invert();
-}
 
 
 
 
-Array.prototype.sort = function () {
+Array.prototype.ex_11 = function () {
     return this.filter(x => x%2!=0).concat(this.filter(x => x%2==0));
 }
 
 
-function ex_11_P(a) {
-    return a.sort();
-}
