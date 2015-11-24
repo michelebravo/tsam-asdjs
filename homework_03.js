@@ -32,6 +32,7 @@ Array.prototype.ex_3 = function () {
 
 
 
+
 var array = [3,5,6,1,2,7,8,9,0]; 
 
 Array.prototype.ex_8 = function () {
@@ -56,6 +57,7 @@ Array.prototype.ex_8 = function () {
 
 
 
+
 Array.prototype.ex_9 = function() {
     var result = [];
     
@@ -70,8 +72,8 @@ Array.prototype.ex_9 = function() {
 
 
 
+
 Array.prototype.ex_11 = function () {
     return this.filter(x => x%2!=0).concat(this.filter(x => x%2==0));
 }
-
 
